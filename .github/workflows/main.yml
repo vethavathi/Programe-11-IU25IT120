@@ -1,0 +1,23 @@
+name: StudentDetails Autograding
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  autograding:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout student submission
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run StudentDetails Tests
+        run: |
+          python tests/test_student_details.py
